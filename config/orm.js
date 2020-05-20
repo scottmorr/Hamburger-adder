@@ -9,4 +9,21 @@
 //  * Export the ORM object in `module.exports
 
 
-var connection = require("../config/connection.js");
+var connection = require("./connection");
+module.exports = {
+    findAll: function (tableName, callback) {
+        var sql = 'SELECT * FROM ??';
+        var data = [tableName];
+
+        connection.query(sql, data, callback)
+        // connection.query(sql, data, function (err, data) {
+        //     callback(err, data)
+        // })
+    },
+    findByCondition: function (tableName, condition, callback) {
+        var sql = "SELECT * FROM ?? "
+        sql += "WHERE " + condition;
+        var data = [tableName]
+        connection.query(sql, data, callback)
+    }
+}

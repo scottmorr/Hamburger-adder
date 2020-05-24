@@ -27,3 +27,6 @@ module.exports = {
         connection.query(sql, data, callback)
     }
 }
+
+
+//module.exports = orm;

@@ -25,8 +25,18 @@ module.exports = {
         sql += "WHERE " + condition;
         var data = [tableName]
         connection.query(sql, data, callback)
+    },
+    update: function (tableName, options, where, callback) {
+        var data = [tableName, options]
+        var SQL = "UPDATE ?? "
+        SQL += "SET ? "
+        SQL += "WHERE " + where
+
+        connection.query(SQL, data, callback)
     }
 }
+
+
 
 
 //module.exports = orm;

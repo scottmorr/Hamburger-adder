@@ -1,3 +1,33 @@
-<h1>Hello</h1>
-<h1>hi</h1>
+<h1> {{title}}</h1>
 
+<div class="flex-container">
+    <img src="/assets/img/hamburger.jpg" alt="">
+
+
+
+    <h3>Hot and Fresh</h3>
+    {{#each burgers}}
+    {{#unless devoured}}
+    <div>
+        {{id}}. {{burger_name}}
+
+        <button class="devourBtn" data-id="{{id}}" data-devoured="1">Eat</button>
+    </div>
+    {{/unless}}
+    {{/each}}
+
+    <hr>
+
+    <h3>Devoured</h3>
+    {{#each burgers}}
+    {{#if devoured}}
+    <div>
+        {{id}}. {{burger_name}}
+
+        <button class="devourBtn" data-id="{{id}}" data-devoured="0">Order Again</button>
+    </div>
+    {{/if}}
+    {{/each}}
+
+
+</div>

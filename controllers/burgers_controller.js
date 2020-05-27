@@ -5,6 +5,9 @@
 var express = require("express");
 var router = express.Router();
 var burger = require("../models/burger.js");
+var connection = require('../config/connection')
+
+
 
 router.get("/", function (req, res) {
 
@@ -12,32 +15,49 @@ router.get("/", function (req, res) {
         if (err) throw err;
 
         console.log(data);
-        res.render("index")
+        res.render("index", {
+            title: "BURGERS'R'US",
+            burgers: data
+        })
     })
 
 })
-router.get("/id/:id", function (req, res) {
-    var id = parseInt(req.params.id)
 
-    burger.findById(id, function (err, data) {
-        if (err) throw err;
+router.get("/api/burger/:id/:devoured", function (req, res) {
+    var id = req.params.id;
+    var options = { devoured: req.params.devoured }
 
-        console.log(data);
-        res.render("index")
+    burger.updateById(id, options, function (err, result) {
+        if (err) return res.sendStatus(500)
+
+        console.log(result);
+
+        res.json(result)
     })
-
 })
-router.get("/devoured/:dev", function (req, res) {
-    var devoured = req.params.dev
 
-    burger.findDevoured(devoured, function (err, data) {
-        if (err) throw err;
+// router.get("/id/:id", function (req, res) {
+//     var id = parseInt(req.params.id)
 
-        console.log(data);
-        res.render("index")
-    })
+//     burger.findById(id, function (err, data) {
+//         if (err) throw err;
 
-})
+//         console.log(data);
+//         res.render("index")
+//     })
+
+// })
+// router.get("/devoured/:dev", function (req, res) {
+//     var devoured = req.params.dev
+
+//     burger.findDevoured(devoured, function (err, data) {
+//         if (err) throw err;
+
+//         console.log(data);
+//         res.render("index")
+//     })
+
+// })
 
 
 

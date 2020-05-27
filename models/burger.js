@@ -12,12 +12,16 @@ module.exports = {
         //     callback(err, data)
         // })
     },
-    findById: function(id, callback){
+    findById: function (id, callback) {
         var condition = "id = " + id;
         orm.findByCondition("burgers", condition, callback)
     },
-    findDevoured: function(dev, callback){
+    findDevoured: function (dev, callback) {
         var condition = "devoured = " + dev;
         orm.findByCondition("burgers", condition, callback)
     },
+    updateById: function (id, options, callback) {
+        var where = "id = " + id;
+        orm.update('burgers', options, where, callback)
+    }
 }

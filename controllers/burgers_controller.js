@@ -23,7 +23,7 @@ router.get("/", function (req, res) {
 
 })
 
-router.get("/api/burger/:id/:devoured", function (req, res) {
+router.get("/api/burgers/:id/:devoured", function (req, res) {
     var id = req.params.id;
     var options = { devoured: req.params.devoured }
 
@@ -36,52 +36,25 @@ router.get("/api/burger/:id/:devoured", function (req, res) {
     })
 })
 
-// router.get("/id/:id", function (req, res) {
-//     var id = parseInt(req.params.id)
 
-//     burger.findById(id, function (err, data) {
-//         if (err) throw err;
+router.post("/api/burgers/:name", function(req, res) {
+    burger.create([
+      "name", 
+    ], [
+      req.body.name, 
+    ], function(result) {
+      res.json({ name: result.insertName });
+    });
+  });
+  
 
-//         console.log(data);
-//         res.render("index")
-//     })
+  router.put("/api/burgers/:name", function(req, res) {
+    var condition = "name = " + req.params.name;
+  
+    console.log("condition", condition);
+  
 
-// })
-// router.get("/devoured/:dev", function (req, res) {
-//     var devoured = req.params.dev
-
-//     burger.findDevoured(devoured, function (err, data) {
-//         if (err) throw err;
-
-//         console.log(data);
-//         res.render("index")
-//     })
-
-// })
-
-
-
-// var fs = require('fs');
-// var path = require('path');
-// var main = path.join(__dirname, '../views/layouts/main.handlebars')
-// var index = path.join(__dirname, '../views/index.handlebars')
-
-// router.get('/', function (req, res) {
-
-//     fs.readFile(main, 'utf8', function (err, main) {
-//         if (err) throw err;
-
-//         fs.readFile(index, 'utf8', function (err, index) {
-//             if (err) throw err;
-
-//             main = main.replace("{{{body}}}", index)
-
-//             console.log(main)
-
-//             res.send(main)
-//         })
-//     })
-// })
+  });
 
 
 module.exports = router;

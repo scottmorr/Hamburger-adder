@@ -15,4 +15,3 @@ In the image below, I created a responsive Hamburger_adder in MySQL database.  I
 
 The below image indicates that the app user can alos Create a Burger, place it on the menu, and prepare to devour it!
 
-![burger pic 2](https://user-images.githubusercontent.com/61360215/83339006-de78d680-a286-11ea-8834-712832ecdaf2.jpg)

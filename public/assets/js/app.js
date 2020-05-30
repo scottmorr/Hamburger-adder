@@ -22,8 +22,7 @@ $(".create-form").on("submit", function(event) {
   
   var newBurger = {
     name: $("#ca").val().trim(),
-    
-    //devoured: $("[name=sleepy]:checked").val()
+    devoured: 0,
   };
   
   console.log("hi");
@@ -40,20 +39,6 @@ $(".create-form").on("submit", function(event) {
     );
   });
 
-$(".delete-burger").on("click", function(event) {
-  var id = $(this).data("id");
-
-  // Send the DELETE request.
-  $.ajax("/api/burgers/" + id, {
-    type: "DELETE"
-  }).then(
-    function() {
-      console.log("deleted burger", id);
-      // Reload the page to get the updated list
-      location.reload();
-    }
-  );
-});
 
 
 
@@ -72,24 +57,5 @@ $(".delete-burger").on("click", function(event) {
 
 
 
-    
-//     event.preventDefault();
-//     console.log("hi");
-//     var newBurger = {
-//         // id: 5,
-//         burger_name: $("#newBurger").val().trim(),
-//         devoured: $("false").val()
-//     };
 
-//     // $(".createBtn").on("click", function (event) {
-//     $.ajax("/api/burger/" + "/" + devoured, {
-//         type: "POST",
-//         data: newBurger
-//     }).then(
-//         function () {
-//             console.log("created new burger");
-//             // Reload the page to get the updated list
-//             location.reload();
-//         }
-//     );
-// })
+

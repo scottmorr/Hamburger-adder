@@ -37,11 +37,12 @@ router.get("/api/burgers/:id/:devoured", function (req, res) {
 })
 
 
-router.post("/api/burgers/:name", function(req, res) {
+router.post("/api/burgers", function(req, res) {
     burger.create([
-      "name", 
+      "burger_name","devoured" 
     ], [
-      req.body.name, 
+      req.body.name,
+      req.body.devoured 
     ], function(result) {
       res.json({ name: result.insertName });
     });

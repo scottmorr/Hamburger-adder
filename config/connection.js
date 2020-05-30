@@ -2,7 +2,7 @@ var mysql = require("mysql");
 var connection;
 
 if (process.env.JAWSDB_URL) {
-  connection = mysql.createConnection(process.env.JAWS_URL);
+  connection = mysql.createConnection(JSON.stringify(process.env.JAWS_URL));
 }else {
   var connection = mysql.createConnection({
     host: "localhost",
